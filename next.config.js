@@ -1,6 +1,6 @@
 // next.config.js
 const config = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
 };
 
 module.exports = config;
