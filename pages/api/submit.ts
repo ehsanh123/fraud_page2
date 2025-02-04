@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const scriptPath: string = './script.py';  // Replace with actual script path
     
     // const pythonPath = 'C:/Users/Ehsan/fraud_web_1.1/venv/Scripts/python.exe';  // Linux/macOS
-    const pythonPath = "python3";
+    const pythonPath = "python";
     const jsonData = JSON.stringify(formData);
     // console.log("Python script executed");
 

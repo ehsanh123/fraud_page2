@@ -1,8 +1,7 @@
 # includes
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import chi2_contingency
+# from scipy.stats import chi2_contingency
 # from google.colab import drive
 # drive.mount('/content/drive')
 #
@@ -10,17 +9,19 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from sklearn.preprocessing import StandardScaler
 # from tensorflow.keras import metrics
 # from metrics import  Precision, Recall
-import tensorflow as tf
+import joblib
+# import tensorflow as tf
+from tensorflow.keras.models import load_model
 #scale values
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.preprocessing import LabelEncoder
+# from sklearn.preprocessing import MinMaxScaler
+# from sklearn.preprocessing import LabelEncoder
 # from tensorflow.keras.models import load_model
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
 
-p1 = tf.keras.metrics.Precision 
-R1 = tf.keras.metrics.Recall
-load_model = tf.keras.models.load_model 
+# p1 = tf.keras.metrics.Precision 
+# R1 = tf.keras.metrics.Recall
+# load_model = tf.keras.models.load_model 
 #data procssing tools
 def f1_score(y_true, y_pred):
     # Ensure y_true and y_pred are of type float32
@@ -45,9 +46,8 @@ def f1_score(y_true, y_pred):
 
 ###############################
 
-X_scaled = pd.read_csv('Scaled_data.csv',index_col=0)
+# X_scaled = pd.read_csv('Scaled_data.csv',index_col=0)
 model = load_model('model_epoch_21.keras', custom_objects={'f1_score': f1_score})
-import joblib
 ###
 # Load encoders and scalers
 encoders = joblib.load('encoders.pkl')  # Load encoders dictionary
@@ -57,8 +57,13 @@ scalers = joblib.load('scalers.pkl')      # Load scaler object
 ###################################################
 #Data preration
 def modeling_1(data_model):
-  X_2 = X_scaled.drop(columns=['target'])
-  data_model=data_model[X_2.columns.values]
+  # X_2 = X_scaled.drop(columns=['target'])
+  Colmns1 = ['USER_ID', 'TYPE', 'STATE', 'AMOUNT_GBP', 'CURRENCY', 'COUNTRY', 'C_HOUR',
+ 'C_MINUTE', 'A_DAY', 'A_HOUR', 'A_MINUTE', 'B_YEAR', 'B_MONTH', 'B_DAY',
+ 'C_unix_time', 'O_unix_time', 'A_unix_time', 'B_unix_time', 'min',
+ 'since_last_tras', 'F_unix_time', 'avg_transaction_amount',
+ 'transaction_amount_std', 'Dif1', 'Dif2']
+  data_model=data_model[Colmns1]#X_2.columns.values]
   y_user = model.predict(data_model.drop(columns=['USER_ID']),verbose=0)
   # print(data_model.iloc[0])
   # print(X3.head())
