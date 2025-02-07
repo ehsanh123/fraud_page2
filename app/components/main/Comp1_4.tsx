@@ -1,5 +1,5 @@
 // components/page1/Comp_1_4.js
-import Image from 'next/image';
+// import Image from 'next/image';
 
 interface Props {
   imageSrc1: string;

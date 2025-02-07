@@ -1,6 +1,6 @@
 // components/page1/Comp_1_1.js
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const Comp_1_1: React.FC = () => {
   return (

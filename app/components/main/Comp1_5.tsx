@@ -2,7 +2,7 @@ import Comp_1_4 from '@/app/components/main/Comp1_4';
 
 // components/page1/Comp_1_5.js
 export default function Comp_1_5() {
-  const images = ['/images/maxres.jpg', '/images/app_law2.png'];
+  // const images = ['/images/maxres.jpg', '/images/app_law2.png'];
 
   return  <div className='flex-col'>
     <div >

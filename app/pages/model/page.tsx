@@ -69,20 +69,20 @@ const FullPage: React.FC = () => {
       [name]: value
     }));
   };
-
+  
+  // const handleSubmit = async (formData) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
-      const res = await fetch("/api/submit", {
+    const res = await fetch("http://localhost:5000/api/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      });
+    });
 
-      const data = await res.json();
+    const data = await res.json();
+    console.log(data);
+
       if (res.ok) {
         // alert('Form submitted successfully!');
         console.log(data);
@@ -96,9 +96,40 @@ const FullPage: React.FC = () => {
     } catch (error) {
       console.error("Error:", error);
       // alert('An error occurred. Please try again.');
-      setResponseData('An error occurred. Please try again.');
+      setResponseData('error: '+error.toString());
     }
-  };
+};
+
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const res = await fetch("/api/submit", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  // const data = await res.json();
+  //     if (res.ok) {
+  //       // alert('Form submitted successfully!');
+  //       console.log(data);
+  //       setResponseData(data);
+
+  //     } else {
+  //       // alert('There was an error submitting the form.');
+  //       // setResponseData('There was an error submitting the form.');
+  //       setResponseData(res);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     // alert('An error occurred. Please try again.');
+  //     setResponseData('An error occurred. Please try again.');
+  //   }
+
+  //     
+  // };
 
   return (
     <div className="form-container">

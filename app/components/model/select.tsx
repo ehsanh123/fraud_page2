@@ -9,7 +9,7 @@ interface DatesPartProps {
 }
 
 
-const SelectPart: React.FC<DatesPartProps> = ({ type, stats, CURR, COUNT , onChange }) => {
+const SelectPart: React.FC<DatesPartProps> = ({ type, stats='COMPLETED', CURR, COUNT , onChange }) => {
     return (
     <div>
       <div className="divider"></div> {/* Divider before the CREATED_DATE section */}
@@ -21,7 +21,7 @@ const SelectPart: React.FC<DatesPartProps> = ({ type, stats, CURR, COUNT , onCha
         ))}
       </select>
       
-      <input type="hidden" name="STATE" value="COMPLETED" />
+      <input type="hidden" name="STATE" value={stats || "COMPLETED"} />
       <p ></p>
       <label htmlFor="COUNTRY">COUNTRY:</label>
         <select id="COUNTRY" name="COUNTRY" onChange={onChange} value={COUNT}>
